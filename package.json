@@ -12,8 +12,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "bootstrap": "^5.3.8",
+    "idb": "^8.0.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "reactstrap": "^9.2.3",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
