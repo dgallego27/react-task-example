@@ -11,7 +11,12 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^16.1.6",
     "@tailwindcss/vite": "^4.1.18",
+    "@tiptap/extension-placeholder": "^3.17.1",
+    "@tiptap/extension-underline": "^3.17.0",
+    "@tiptap/react": "^3.17.0",
+    "@tiptap/starter-kit": "^3.17.0",
     "bootstrap": "^5.3.8",
     "idb": "^8.0.3",
     "react": "^19.2.0",

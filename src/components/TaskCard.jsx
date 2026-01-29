@@ -1,5 +1,6 @@
 import { useTasks } from "../context/TaskContext";
 import { useState } from "react";
+import RichTextEditor from "./RichTextEditor";
 
 function TaskCard({ task }) {
   const { deleteTask, updateTask } = useTasks();
@@ -16,30 +17,46 @@ function TaskCard({ task }) {
     setIsEditing(false);
   };
 
+  const handleEdit = () => {
+    // Resetear los valores cuando entramos en modo edición
+    setTitle(task.title);
+    setDescription(task.description);
+    setIsEditing(true);
+  };
+
   return (
-    <div className="bg-gray-800 text-white p-4 rounded-md">
+    <div className="bg-gray-800 text-white p-5 rounded-xl h-auto flex-col">
       {isEditing ? (
-        <>
-          <input
+        <>         
+          <RichTextEditor
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="bg-slate-300 text-black p-1 rounded w-full mb-2"
+            onChange={setTitle}
+            placeholder="Título de la tarea"
           />
-          <textarea
+          
+          <RichTextEditor
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="bg-slate-300 text-black p-1 rounded w-full"
+            onChange={setDescription}
+            placeholder="Descripción de la tarea"
           />
         </>
       ) : (
         <>
-          <h1 className="text-xl font-bold capitalize">{task.title}</h1>
-          <p className="text-gray-500 text-sm">{task.description}</p>
+          <h1
+            className="text-xl font-bold capitalize"
+            dangerouslySetInnerHTML={{ __html: task.title }}
+          />
+
+          <p
+            className="text-gray-400 text-sm mt-2"
+            dangerouslySetInnerHTML={{ __html: task.description }}
+          />
         </>
       )}
 
+      <div className="flex pt-3 mb-auto">
       <button
-        className="bg-red-500 px-2 py-1 rounded-md mt-4 hover:bg-red-400"
+        className="bg-red-500 px-2 py-1 rounded-md mt-2 mr-2 hover:bg-red-400"
         onClick={() => deleteTask(task.id)}
       >
         Eliminar
@@ -47,7 +64,7 @@ function TaskCard({ task }) {
 
       <button
         className="bg-yellow-500 px-2 py-1 rounded-md mt-2 mr-2 hover:bg-yellow-400"
-        onClick={() => setIsEditing(!isEditing)}
+        onClick={handleEdit}
       >
         {isEditing ? "Cancelar" : "Editar"}
       </button>
@@ -55,11 +72,12 @@ function TaskCard({ task }) {
       {isEditing && (
         <button
           onClick={handleSave}
-          className="bg-green-500 px-2 py-1 rounded-md mt-2 hover:bg-green-400"
+          className="bg-green-500 px-2 py-1 rounded-md mt-2 mr-2 hover:bg-green-400"
         >
           Guardar
         </button>
       )}
+      </div>
     </div>
   );
 }

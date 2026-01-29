@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap {
+  outline: none;
+  min-height: 80px;
+  padding: 0.5rem;
+}
+
+.tiptap p {
+  margin: 0;
+}

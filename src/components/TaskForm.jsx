@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useTasks } from "../context/TaskContext";
+import RichTextEditor from "./RichTextEditor";
+
 
 function TaskForm() {
   const [title, setTitle] = useState("");
@@ -14,26 +16,25 @@ function TaskForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="bg-slate-800 p-10 mb-4">
-        <h1 className="text-2xl font-bold mb-3 text-white">Crea tu tarea</h1>
+    <div className="max-w-max mx-max box-borde">
+      <form onSubmit={handleSubmit} className="p-10 mb-2 bg-gray-800 rounded-xl" >
+        <h1 className="flex items-center justify-center text-2xl font-bold mb-3 text-white ">Crea tu tarea</h1>
 
-        <input
+        <RichTextEditor    
           placeholder="Escribe la tarea"
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(html) => setTitle(html)}
           value={title}
-          className="bg-slate-300 p-3 w-full mb-2"
-          autoFocus
+          className="bg-slate-950 p-2 w-3 "
         />
 
-        <textarea
+        <RichTextEditor
           placeholder="Escribe la descripcion"
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(html) => setDescription(html)}
           value={description}
-          className="bg-slate-300 p-3 w-full mb-2"
+          className="bg-slate-300 p-2 w-3"
         />
 
-        <button className="bg-indigo-500 px-3 py-3 w-full mb-2">
+        <button className="bg-[#5B55A0] rounded-xl px-30 py-2">
           Guardar
         </button>
       </form>
