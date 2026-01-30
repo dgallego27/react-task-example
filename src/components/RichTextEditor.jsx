@@ -9,7 +9,11 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
 
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        // Asegurarnos de no duplicar nada
+        strike: true,
+        bold: true,
+      }),
       Underline,
       Placeholder.configure({
         placeholder: placeholder,
@@ -35,9 +39,7 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
     
     const currentContent = editor.getHTML();
     
-    // Solo actualiza si el contenido es diferente
     if (value !== currentContent) {
-      // Usa una transacción para evitar que se dispare onUpdate
       editor.commands.setContent(value || "", false);
     }
   }, [editor, value]);
@@ -53,7 +55,6 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
 
   return (
     <div className="border rounded bg-white text-black p-3 mb-3">
-      {/* Botones de formato */}
       <div className="mb-2 space-x-2 pb-2 border-b">
         <button
           type="button"
@@ -90,8 +91,7 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
         </button>
       </div>
 
-      {/* Editor */}
-      <div className="min-h-[300]">
+      <div className="min-h-25">
         <EditorContent editor={editor} />
       </div>
     </div>

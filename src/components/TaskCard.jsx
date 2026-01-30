@@ -25,7 +25,7 @@ function TaskCard({ task }) {
   };
 
   return (
-    <div className="bg-gray-800 text-white p-5 rounded-xl h-auto flex-col">
+    <div className="bg-gray-800 text-white p-5 rounded-xl h-min w-auto flex-col">
       {isEditing ? (
         <>         
           <RichTextEditor
