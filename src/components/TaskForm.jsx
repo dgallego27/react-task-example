@@ -18,7 +18,7 @@ function TaskForm() {
   return (
     <div className="max-w-max mx-max box-borde">
       <form onSubmit={handleSubmit} className="p-10 mb-2 bg-gray-800 rounded-xl" >
-        <h1 className="flex min-h items-center justify-center text-2xl font-bold mb-3 text-white ">Crea tu tarea</h1>
+        <h1 className="flex min-h-24 items-center justify-center text-2xl font-bold mb-3 text-white ">Crea tu tarea</h1>
 
         <RichTextEditor    
           placeholder="Escribe la tarea"

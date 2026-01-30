@@ -54,7 +54,7 @@ function TaskCard({ task }) {
         </>
       )}
 
-      <div className="flex min-h pt-3 mb-auto">
+      <div className="flex min-h-24 pt-3 mb-auto">
       <button
         className="bg-red-500 px-2 py-1 rounded-md mt-2 mr-2 hover:bg-red-400"
         onClick={() => deleteTask(task.id)}

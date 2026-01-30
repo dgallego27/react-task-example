@@ -91,7 +91,7 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
         </button>
       </div>
 
-      <div className="min-h-25">
+      <div className="min-h-24">
         <EditorContent editor={editor} />
       </div>
     </div>

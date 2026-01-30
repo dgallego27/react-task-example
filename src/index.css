@@ -22,3 +22,26 @@ html, body, #root {
 .tiptap p {
   margin: 0;
 }
+
+/* Estilos para el contenido del editor */
+.ProseMirror {
+  min-height: 100px;
+  padding: 0.5rem;
+  outline: none;
+}
+
+.ProseMirror p {
+  margin-bottom: 0.5rem;
+}
+
+.ProseMirror strong {
+  font-weight: bold;
+}
+
+.ProseMirror u {
+  text-decoration: underline;
+}
+
+.ProseMirror s {
+  text-decoration: line-through;
+}

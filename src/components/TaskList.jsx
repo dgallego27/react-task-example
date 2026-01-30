@@ -8,7 +8,7 @@ function TaskList() {
 
   if (tasks.length === 0) {
     return <h1
-    className='flex min-h text-3xl font-bold justify-center items-center'>No hay tareas aún</h1>;
+    className='flex min-h-24 text-3xl font-bold justify-center items-center'>No hay tareas aún</h1>;
   }
 
   return (
