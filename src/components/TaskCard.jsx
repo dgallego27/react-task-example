@@ -7,11 +7,13 @@ function TaskCard({ task }) {
 
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(task.title);
+  const [responsable, setResponsable] = useState(task.responsable || "");
   const [description, setDescription] = useState(task.description);
 
   const handleSave = () => {
     updateTask(task.id, {
       title,
+      responsable,
       description,
     });
     setIsEditing(false);
@@ -19,6 +21,7 @@ function TaskCard({ task }) {
 
   const handleEdit = () => {
     setTitle(task.title);
+    setResponsable(task.responsable || "");
     setDescription(task.description);
     setIsEditing(true);
   };
@@ -34,6 +37,16 @@ function TaskCard({ task }) {
               placeholder="Título de la tarea"
             />
 
+            <div className="border rounded bg-white text-black p-3 mb-3 text-base">
+              <input
+                type="text"
+                className="w-full bg-transparent outline-none text-base"
+                placeholder="Responsable"
+                value={responsable}
+                onChange={(e) => setResponsable(e.target.value)}
+              />
+            </div>
+
             <RichTextEditor
               value={description}
               onChange={setDescription}
@@ -47,6 +60,10 @@ function TaskCard({ task }) {
               style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
               dangerouslySetInnerHTML={{ __html: task.title }}
             />
+            <p className="text-base mt-1 text-gray-300">
+              <span className="font-semibold">Responsable:</span>{" "}
+              {task.responsable || "Sin asignar"}
+            </p>
 
             <div
               className="text-gray-400 text-sm mt-2 task-rich-content"

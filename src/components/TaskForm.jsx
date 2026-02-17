@@ -5,13 +5,15 @@ import RichTextEditor from "./RichTextEditor";
 
 function TaskForm() {
   const [title, setTitle] = useState("");
+  const [responsable, setResponsable] = useState("");
   const [description, setDescription] = useState("");
   const { addTask } = useTasks();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask({ title, description });
+    addTask({ title, responsable, description });
     setTitle("");
+    setResponsable("");
     setDescription("");
   };
 
@@ -26,6 +28,16 @@ function TaskForm() {
           value={title}
           className="bg-slate-950 p-2 w-3 "
         />
+
+        <div className="border rounded bg-white text-black p-3 mb-3 text-base">
+          <input
+            type="text"
+            placeholder="Escribe el responsable"
+            value={responsable}
+            onChange={(e) => setResponsable(e.target.value)}
+            className="w-full bg-transparent outline-none text-base"
+          />
+        </div>
 
         <RichTextEditor
           placeholder="Escribe la descripcion"
