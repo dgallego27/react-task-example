@@ -65,3 +65,9 @@ html, body, #root {
 .task-rich-content li {
   margin: 0.25rem 0;
 }
+
+.ProseMirror em,
+.task-rich-content em {
+  font-style: italic;
+}
+

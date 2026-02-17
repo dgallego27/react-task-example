@@ -12,13 +12,14 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
       StarterKit.configure({
         strike: true,
         bold: true,
+        italic: true,
         bulletList: true,
         orderedList: true,
         listItem: true,
       }),
       Underline,
       Placeholder.configure({
-        placeholder: placeholder,
+        placeholder,
       }),
     ],
     content: value || "",
@@ -57,7 +58,7 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
 
   return (
     <div className="border rounded bg-white text-black p-3 mb-3">
-      <div className="mb-2 space-x-2 pb-2 border-b">
+      <div className="mb-2 space-x-1.5 pb-2 border-b">
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
@@ -90,6 +91,17 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
           }`}
         >
           <s>ab</s>
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().toggleItalic().run()}
+          className={`px-3 py-1 rounded ${
+            isMarkActive("italic")
+              ? "border-2 border-[#5B55A0] bg-[#5b55a03c] text-[#5B55A0]"
+              : "bg-gray-200 text-black"
+          }`}
+        >
+          <em>K</em>
         </button>
         <button
           type="button"
