@@ -18,7 +18,6 @@ function TaskCard({ task }) {
   };
 
   const handleEdit = () => {
-    // Reset values when entering edit mode
     setTitle(task.title);
     setDescription(task.description);
     setIsEditing(true);
@@ -44,14 +43,14 @@ function TaskCard({ task }) {
         ) : (
           <>
             <h1
-              className="text-xl font-bold capitalize overflow-wrap-anywhere"
-              style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}
+              className="text-xl font-bold capitalize task-rich-content"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
               dangerouslySetInnerHTML={{ __html: task.title }}
             />
 
-            <p
-              className="text-gray-400 text-sm mt-2"
-              style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}
+            <div
+              className="text-gray-400 text-sm mt-2 task-rich-content"
+              style={{ wordWrap: "break-word", overflowWrap: "break-word" }}
               dangerouslySetInnerHTML={{ __html: task.description }}
             />
           </>

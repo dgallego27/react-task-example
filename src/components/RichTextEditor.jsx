@@ -1,4 +1,4 @@
-import { useEditor, EditorContent } from "@tiptap/react";
+﻿import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -10,9 +10,11 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
-        // Asegurarnos de no duplicar nada
         strike: true,
         bold: true,
+        bulletList: true,
+        orderedList: true,
+        listItem: true,
       }),
       Underline,
       Placeholder.configure({
@@ -36,9 +38,9 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
 
   useEffect(() => {
     if (!editor) return;
-    
+
     const currentContent = editor.getHTML();
-    
+
     if (value !== currentContent) {
       editor.commands.setContent(value || "", false);
     }
@@ -89,10 +91,32 @@ function RichTextEditor({ value, onChange, placeholder = "Escribe algo..." }) {
         >
           <s>ab</s>
         </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().toggleBulletList().run()}
+          className={`px-3 py-1 rounded ${
+            editor.isActive("bulletList")
+              ? "border-2 border-[#5B55A0] bg-[#5b55a03c] text-[#5B55A0]"
+              : "bg-gray-200 text-black"
+          }`}
+        >
+          ⁝☰
+        </button>
+        <button
+          type="button"
+          onClick={() => editor.chain().focus().toggleOrderedList().run()}
+          className={`px-3 py-1 rounded ${
+            editor.isActive("orderedList")
+              ? "border-2 border-[#5B55A0] bg-[#5b55a03c] text-[#5B55A0]"
+              : "bg-gray-200 text-black"
+          }`}
+        >
+          1.☰
+        </button>
       </div>
 
       <div className="min-h-24">
-        <EditorContent editor={editor} />
+        <EditorContent editor={editor} className="task-rich-content" />
       </div>
     </div>
   );
